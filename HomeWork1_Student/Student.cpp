@@ -21,6 +21,12 @@ void Student::solve() {
     b = eq.b;
     c = eq.c;
 
+    if (a == 0 && b != 0) {
+        myAns1 = -c / b;
+        myAns2 = NAN;
+    }
+
+
     double D = b * b - 4 * a * c;
 
     if (D > 0) {

@@ -6,6 +6,11 @@
 
 void Equation::solve() {
 
+    if (a == 0 && b != 0) {
+        sol1 = -c / b;
+        sol2 = NAN;
+    }
+
     double D = b * b - 4 * a * c;
 
     if (D > 0) {
