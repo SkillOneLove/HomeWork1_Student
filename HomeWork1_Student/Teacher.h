@@ -19,6 +19,8 @@ private:
 	std::mt19937 gen{ std::random_device{}() };
 
 public:
+	Teacher() = default;
+
 	Teacher(std::map<const std::string, int>& log, std::vector<Equation>& tasks, std::vector<Student>& listStudents) : 
 		log(std::move(log)), tasks(std::move(tasks)), listStudents(std::move(listStudents)) {}
 
@@ -32,5 +34,7 @@ public:
 
 	void sendLog();
 
-	~Teacher();
+	size_t countUncheckedLetters() { return uncheckedTasks.size(); }
+
+	~Teacher() = default;
 };

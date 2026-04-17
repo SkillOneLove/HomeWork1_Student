@@ -16,8 +16,36 @@ void ReadFile(std::vector<std::string>& v, const std::string& fName) {
     }
 }
 
+int readInt() {
+    int value;
+    while (true) {
+        std::cin >> value;
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Input error. Enter an integer: ";
+        }
+        else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            return value;
+        }
+    }
+}
 
-Teacher SetupModel() {
+void showMenu(Teacher &t) {
+    std::cout << "\n========= MENU =========\n";
+    std::cout << "1. Distribute tasks to students\n";
+    std::cout << "2. Ask students to complete assignments\n";
+    std::cout << "3. Ask students to send solutions\n";
+    std::cout << "4. Check the submitted solutions (" << t.countUncheckedLetters() << ")\n";
+    std::cout << "5. Print Progress Log\n";
+    std::cout << "6. Execute 1-5 at a time\n";
+    std::cout << "0. Exit the program\n";
+    std::cout << "========================\n";
+    std::cout << "Choose the action (1-6, 0): ";
+}
+
+Model::Model() {
     std::vector<std::string> names;
     std::vector<std::string> eqStr;
 
@@ -37,43 +65,13 @@ Teacher SetupModel() {
         tasks.push_back(Equation(str));
     }
 
-    return Teacher(log, tasks, listStudents);
+    t = Teacher(log, tasks, listStudents);
 }
 
-
-int readInt() {
-    int value;
-    while (true) {
-        std::cin >> value;
-        if (std::cin.fail()) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Input error. Enter an integer: ";
-        }
-        else {
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            return value;
-        }
-    }
-}
-
-void showMenu() {
-    std::cout << "\n========= MENU =========\n";
-    std::cout << "1. Distribute tasks to students\n";
-    std::cout << "2. Ask students to complete assignments\n";
-    std::cout << "3. Ask students to send solutions\n";
-    std::cout << "4. Check the submitted solutions\n";
-    std::cout << "5. Print Progress Log\n";
-    std::cout << "6. Execute 1-5 at a time\n";
-    std::cout << "0. Exit the program\n";
-    std::cout << "========================\n";
-    std::cout << "Choose the action (1-6, 0): ";
-}
-
-void StartModel(Teacher& t) {
+void Model::startModel() {
     bool running = true;
     while (running) {
-        showMenu();
+        showMenu(t);
         int choice = readInt();
 
         system("cls");

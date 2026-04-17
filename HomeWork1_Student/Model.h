@@ -5,6 +5,14 @@
 #include <iostream>
 #include "Teacher.h"
 
-Teacher SetupModel();
+class Model {
+private:
+	Teacher t;
 
-void StartModel(Teacher& t);
+public:
+	Model();
+
+	void startModel();
+
+	~Model() = default;
+};

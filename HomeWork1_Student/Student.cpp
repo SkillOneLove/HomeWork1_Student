@@ -9,23 +9,39 @@ void Student::setRandomType() {
     std::uniform_int_distribution<int> dist(0, 2);
     int t = dist(gen);
     switch (t) {
-    case 0: type = GOOD; break;
-    case 1: type = AVERAGE; break;
-    case 2: type = BAD; break;
+    case 0: {
+        type = GOOD;
+        break;
+    }
+    case 1: {
+        type = AVERAGE;
+        break;
+    }
+    case 2: {
+        type = BAD;
+        break;
+    }
     }
 }
 
 void Student::solve() {
     double a, b, c;
-    a = eq.a;
-    b = eq.b;
-    c = eq.c;
+    a = eq.getA();
+    b = eq.getB();
+    c = eq.getC();
 
-    if (a == 0 && b != 0) {
-        myAns1 = -c / b;
+    // Проверка на линейность
+    if (a == 0) {
+        // Проверка на вырожденность 
+        if (b == 0) {
+            myAns1 = NAN;
+        }
+        else {
+            myAns1 = -c / b;
+        }
         myAns2 = NAN;
+        return; 
     }
-
 
     double D = b * b - 4 * a * c;
 
@@ -44,9 +60,9 @@ void Student::solve() {
 
 void Student::solveEq() {
     solve();
-    std::uniform_int_distribution<int> dist(0, 100);
     switch (type) {
-    case AVERAGE:
+    case AVERAGE: {
+        std::uniform_int_distribution<int> dist(0, 100);
         if (dist(gen) < 40) {
             if (!std::isnan(myAns1)) {
                 myAns1 += 5;
@@ -56,11 +72,12 @@ void Student::solveEq() {
             }
         }
         break;
-
-    case BAD:
+    }
+    case BAD: {
         myAns1 = 0;
         myAns2 = 0;
         break;
+    }
     }
 }
 
@@ -71,5 +88,3 @@ void Student::getEq(Equation& task) {
 Letter Student::sendResult() {
     return Letter(eq, myAns1, myAns2, name);
 }
-
-Student::~Student() = default;

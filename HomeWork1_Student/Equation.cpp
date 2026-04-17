@@ -6,24 +6,32 @@
 
 void Equation::solve() {
 
-    if (a == 0 && b != 0) {
-        sol1 = -c / b;
-        sol2 = NAN;
+    // Проверка на линейность
+    if (a == 0) {
+        // Проверка на вырожденность
+        if (b == 0) {
+            root1 = NAN;
+        }
+        else {
+            root1 = -c / b;
+        }
+        root2 = NAN;
+        return;
     }
 
     double D = b * b - 4 * a * c;
 
     if (D > 0) {
-        sol1 = (-b + sqrt(D)) / (2 * a);
-        sol2 = (-b - sqrt(D)) / (2 * a);
+        root1 = (-b + sqrt(D)) / (2 * a);
+        root2 = (-b - sqrt(D)) / (2 * a);
     }
     else if (D == 0) {
-        sol1 = -b / (2 * a);
-        sol2 = NAN;
+        root1 = -b / (2 * a);
+        root2 = NAN;
     }
     else {
-        sol1 = NAN;
-    }   sol2 = NAN;
+        root1 = NAN;
+    }   root2 = NAN;
 }
 
 Equation::Equation(std::string str) {

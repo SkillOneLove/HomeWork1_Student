@@ -28,5 +28,5 @@ public:
 
 	Letter sendResult();
 
-	~Student();
+	~Student() = default;
 };

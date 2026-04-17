@@ -2,11 +2,8 @@
 #include <iostream>
 #include "MathExamModel.h"
 
-
-
 int main(void) {
-	Teacher teacher = SetupModel();
-
-	StartModel(teacher);
+	Model m = Model();
+	m.startModel();
 	return 0;
 }

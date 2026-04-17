@@ -18,7 +18,7 @@
     <ClInclude Include="Equation.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Functions.h">
+    <ClInclude Include="Model.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Letter.h">
@@ -41,10 +41,7 @@
     <ClCompile Include="Equation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Functions.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Letter.cpp">
+    <ClCompile Include="Model.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">

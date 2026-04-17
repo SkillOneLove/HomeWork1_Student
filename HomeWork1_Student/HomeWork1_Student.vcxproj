@@ -125,7 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Equation.h" />
-    <ClInclude Include="Functions.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Letter.h" />
     <ClInclude Include="MathExamModel.h" />
     <ClInclude Include="Student.h" />
@@ -134,7 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Equation.cpp" />
-    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
