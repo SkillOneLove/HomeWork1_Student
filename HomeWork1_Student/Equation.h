@@ -11,7 +11,7 @@ private:
 	double root1;
 	double root2;
 
-	void solve();	// Используется только в конструкторе
+	void solve();	// Used only in the constructor
 public:
 
 	Equation() = default;

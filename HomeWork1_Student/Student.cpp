@@ -30,9 +30,9 @@ void Student::solve() {
     b = eq.getB();
     c = eq.getC();
 
-    // Проверка на линейность
+    // Checking for linearity
     if (a == 0) {
-        // Проверка на вырожденность 
+        // Checking for degeneracy
         if (b == 0) {
             myAns1 = NAN;
         }

@@ -6,9 +6,9 @@
 
 void Equation::solve() {
 
-    // Проверка на линейность
+    // Checking for linearity
     if (a == 0) {
-        // Проверка на вырожденность
+        // Checking for degeneracy
         if (b == 0) {
             root1 = NAN;
         }
