@@ -1,9 +1,9 @@
 #include <iostream>
 #include <limits>
 #include <cstdlib>
-#include "Functions.h"
+#include "Model.h"
 
-void ReadFile(std::vector<std::string>& v, const std::string& fName) {
+void Model::readFile(std::vector<std::string>& v, const std::string& fName) {
     std::fstream f(fName);
     if (!f.is_open()) {
         std::cout << "File cannot be opened" << std::endl;
@@ -16,7 +16,7 @@ void ReadFile(std::vector<std::string>& v, const std::string& fName) {
     }
 }
 
-int readInt() {
+int Model::readInt() {
     int value;
     while (true) {
         std::cin >> value;
@@ -32,7 +32,7 @@ int readInt() {
     }
 }
 
-void showMenu(Teacher &t) {
+void Model::showMenu() {
     std::cout << "\n========= MENU =========\n";
     std::cout << "1. Distribute tasks to students\n";
     std::cout << "2. Ask students to complete assignments\n";
@@ -53,8 +53,8 @@ Model::Model() {
     std::vector<Equation> tasks;
     std::vector<Student> listStudents;
     
-    ReadFile(names, "StudentsList.txt");
-    ReadFile(eqStr, "TasksList.txt");
+    readFile(names, "StudentsList.txt");
+    readFile(eqStr, "TasksList.txt");
 
     for (const auto& name : names) {
         log[name];
@@ -71,7 +71,7 @@ Model::Model() {
 void Model::startModel() {
     bool running = true;
     while (running) {
-        showMenu(t);
+        showMenu();
         int choice = readInt();
 
         system("cls");
